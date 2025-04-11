@@ -16,22 +16,22 @@ const Header = () => {
         <ul>
           <li>
             <a href="">
-              <span>WOMAN</span>
+              <span>NỮ</span>
             </a>
           </li>
           <li>
             <a href="">
-              <span>MAN</span>
+              <span>NAM</span>
             </a>
           </li>
           <li>
             <a href="">
-              <span>BOY</span>
+              <span>BÉ GÁI</span>
             </a>
           </li>
           <li>
             <a href="">
-              <span>GIRL</span>
+              <span>BÉ TRAI</span>
             </a>
           </li>
         </ul>
@@ -48,19 +48,19 @@ const Header = () => {
         <div className="header-store">
           <a href="" className="group-icon">
             <img src={shopIcon} alt="" />
-            <span>Shop</span>
+            <span>Cửa hàng</span>
           </a>
         </div>
         <div className="header-account">
           <a href="" className="group-icon">
             <img src={accountIcon} alt="" />
-            <span>Account</span>
+            <span>Tài khoản</span>
           </a>
         </div>
         <div className="header-cart">
           <a href="" className="group-icon">
             <img src={cartIcon} alt="" />
-            <span>Cart</span>
+            <span>Giỏ hàng</span>
           </a>
         </div>
       </div>
