@@ -12,7 +12,12 @@ import productRouter1 from "../../assets/img/product-router1.png";
 import productRouter2 from "../../assets/img/product-router2.png";
 import productRouter3 from "../../assets/img/product-router3.png";
 import productRouter4 from "../../assets/img/product-router4.png";
+import { useState } from "react";
 const MainHomepage = () => {
+  const [active, setActive] = useState(1);
+  const handleTransition = (event) => {
+    setActive(event.target.id);
+  };
   return (
     <div className="main-homepage-container">
       <div className="main-content">
