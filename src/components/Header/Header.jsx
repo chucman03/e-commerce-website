@@ -5,65 +5,71 @@ import accountIcon from "../../assets/img/account-icon.svg";
 import cartIcon from "../../assets/img/cart-icon.svg";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
+import MultilevelMenu from "./MultilevelMenu";
 const Header = () => {
   return (
-    <div className="header-container">
-      <div className="header-logo">
-        <a href="/">
-          <img src={logoCanifa} alt="logo canifa" />
-        </a>
-      </div>
-      <div className="header-menu">
-        <ul>
-          <li>
-            <NavLink to="/women" className="nav-link">
-              <span>NỮ</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/man" className="nav-link">
-              <span>NAM</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/girl" className="nav-link">
-              <span>BÉ GÁI</span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/boy" className="nav-link">
-              <span>BÉ TRAI</span>
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-      <div className="header-search">
-        <div className="search-input-group">
-          <button role="button" aria-label="Search" className="search-btn">
-            <img src={searchIcon} alt="" />
-          </button>
-          <input type="text" placeholder="search" className="search-input" />
-        </div>
-      </div>
-      <div className="header-group-icon">
-        <div className="header-store">
-          <a href="" className="group-icon">
-            <img src={shopIcon} alt="" />
-            <span>Cửa hàng</span>
+    <div className="header">
+      <div className="header-container">
+        <div className="header-logo">
+          <a href="/">
+            <img src={logoCanifa} alt="logo canifa" />
           </a>
         </div>
-        <div className="header-account">
-          <a href="" className="group-icon">
-            <img src={accountIcon} alt="" />
-            <span>Tài khoản</span>
-          </a>
+        <div className="header-menu">
+          <ul>
+            <li>
+              <NavLink to="/women" className="nav-link">
+                <span>NỮ</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/man" className="nav-link">
+                <span>NAM</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/girl" className="nav-link">
+                <span>BÉ GÁI</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/boy" className="nav-link">
+                <span>BÉ TRAI</span>
+              </NavLink>
+            </li>
+          </ul>
         </div>
-        <div className="header-cart">
-          <a href="" className="group-icon">
-            <img src={cartIcon} alt="" />
-            <span>Giỏ hàng</span>
-          </a>
+        <div className="header-search">
+          <div className="search-input-group">
+            <button role="button" aria-label="Search" className="search-btn">
+              <img src={searchIcon} alt="" />
+            </button>
+            <input type="text" placeholder="search" className="search-input" />
+          </div>
         </div>
+        <div className="header-group-icon">
+          <div className="header-store">
+            <a href="" className="group-icon">
+              <img src={shopIcon} alt="" />
+              <span>Cửa hàng</span>
+            </a>
+          </div>
+          <div className="header-account">
+            <a href="" className="group-icon">
+              <img src={accountIcon} alt="" />
+              <span>Tài khoản</span>
+            </a>
+          </div>
+          <div className="header-cart">
+            <a href="" className="group-icon">
+              <img src={cartIcon} alt="" />
+              <span>Giỏ hàng</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="sub-menu">
+        <MultilevelMenu />
       </div>
     </div>
   );
