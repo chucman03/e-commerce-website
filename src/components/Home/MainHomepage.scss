@@ -14,11 +14,8 @@
         width: 100vw;
         height: 100%;
         object-fit: cover;
+        transition: all ease 0.5s;
       }
-    }
-    .active {
-      transform: translateX(-200%);
-      transition: all ease 0.5s;
     }
   }
   .slicks {
@@ -34,6 +31,7 @@
       border-radius: 100%;
       border: none;
       background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
     }
     .slick-next {
       position: absolute;
@@ -45,6 +43,7 @@
       border-radius: 100%;
       border: none;
       background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
     }
   }
 
@@ -63,7 +62,8 @@
     }
     .dot.active {
       cursor: default;
-      background: #e6e7e8;
+      // background: #e6e7e8;
+      background: rgb(127, 127, 131);
     }
   }
   .introduction {

@@ -4,6 +4,7 @@ import shopIcon from "../../assets/img/shop-icon.svg";
 import accountIcon from "../../assets/img/account-icon.svg";
 import cartIcon from "../../assets/img/cart-icon.svg";
 import "./Header.scss";
+import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div className="header-container">
@@ -15,24 +16,24 @@ const Header = () => {
       <div className="header-menu">
         <ul>
           <li>
-            <a href="">
+            <NavLink to="/women" className="nav-link">
               <span>NỮ</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/man" className="nav-link">
               <span>NAM</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/girl" className="nav-link">
               <span>BÉ GÁI</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/boy" className="nav-link">
               <span>BÉ TRAI</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

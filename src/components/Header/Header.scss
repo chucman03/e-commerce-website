@@ -32,7 +32,21 @@ a {
       align-items: center;
       list-style-type: none;
       li {
-        a {
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        .nav-link.active::before {
+          content: "";
+          position: absolute;
+          background-color: red;
+          width: 45px;
+          height: 5px;
+          border-radius: 5px;
+          top: 30px;
+          left: -6px;
+        }
+
+        span {
           font-weight: 700;
         }
       }

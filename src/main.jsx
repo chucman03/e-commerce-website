@@ -4,9 +4,12 @@ import "./index.css";
 import App from "./App.jsx";
 import "./Reset.scss";
 import Layout from "./Layout.jsx";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  // <StrictMode>
+  <BrowserRouter>
     <Layout />
-  </StrictMode>
+  </BrowserRouter>
+  // </StrictMode>
 );

@@ -12,49 +12,73 @@ import productRouter1 from "../../assets/img/product-router1.png";
 import productRouter2 from "../../assets/img/product-router2.png";
 import productRouter3 from "../../assets/img/product-router3.png";
 import productRouter4 from "../../assets/img/product-router4.png";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Footer from "../Footer/Footer";
+import { NavLink } from "react-router-dom";
 const MainHomepage = () => {
-  const [active, setActive] = useState(1);
-  const handleTransition = (event) => {
-    setActive(event.target.id);
+  const [active, setActive] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const autoSlideRef = useRef(null);
+  // auto run slide and stop when hover
+  useEffect(() => {
+    if (!isHovering) {
+      autoSlideRef.current = setInterval(() => {
+        nextBtn();
+      }, 3000);
+    }
+    return () => clearInterval(autoSlideRef.current);
+  }, [active, isHovering]);
+
+  const contentItem = [contentItem1, contentItem2, contentItem3, contentItem4];
+
+  // change the image slide
+  const nextBtn = (event) => {
+    setActive(active === contentItem.length - 1 ? 0 : active + 1);
   };
+  const prevBtn = (event) => {
+    setActive(active === 0 ? contentItem.length - 1 : active - 1);
+  };
+  console.log(contentItem);
   return (
     <div className="main-homepage-container">
       <div className="main-content">
-        <div className="content-item  ">
-          <a href="">
-            <img src={contentItem1} alt="" />
-          </a>
-        </div>
-        <div className="content-item ">
-          <a href="">
-            <img src={contentItem2} alt="" />
-          </a>
-        </div>
-        <div className="content-item active">
-          <a href="">
-            <img src={contentItem3} alt="" />
-          </a>
-        </div>
-        <div className="content-item ">
-          <a href="">
-            <img src={contentItem4} alt="" />
-          </a>
-        </div>
+        {contentItem.map((item, index) => {
+          return (
+            <div
+              className={
+                active === index ? "content-item active" : "content-item"
+              }
+              key={index}
+            >
+              <img
+                onMouseEnter={() => setIsHovering(true)}
+                onMouseLeave={() => setIsHovering(false)}
+                src={item}
+                alt=""
+                style={{ translate: `${-100 * active}%` }}
+              />
+            </div>
+          );
+        })}
       </div>
       <div className="slicks">
-        <button className="slick-prev">
+        <button className="slick-prev" onClick={prevBtn}>
           <img src={prev} alt="" />
         </button>
-        <button className="slick-next">
+        <button className="slick-next" onClick={nextBtn}>
           <img src={next} alt="" />
         </button>
       </div>
       <div className="dots">
-        <span className="dot active"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
+        {contentItem.map((_, index) => {
+          return (
+            <span
+              key={`index-${index}`}
+              className={active === index ? "dot active" : "dot"}
+              onClick={() => setActive(index)}
+            ></span>
+          );
+        })}
       </div>
       <div className="introduction">
         <div className="intro-item">
@@ -91,27 +115,28 @@ const MainHomepage = () => {
         <h2 className="products-nav-title">Sản phẩm mới</h2>
         <div className="products">
           <div className="product-router">
-            <a href="">
+            <NavLink to="/women">
               <img src={productRouter1} alt="" />
-            </a>
+            </NavLink>
           </div>
           <div className="product-router">
-            <a href="">
+            <NavLink to="/man">
               <img src={productRouter2} alt="" />
-            </a>
+            </NavLink>
           </div>
           <div className="product-router">
-            <a href="">
+            <NavLink to="/girl">
               <img src={productRouter3} alt="" />
-            </a>
+            </NavLink>
           </div>
           <div className="product-router">
-            <a href="">
+            <NavLink to="/boy">
               <img src={productRouter4} alt="" />
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
