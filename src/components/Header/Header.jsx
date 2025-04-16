@@ -86,7 +86,7 @@ const Header = () => {
             </a>
           </div>
           <div className="header-account">
-            <a href="" className="group-icon">
+            <a href="/account" className="group-icon">
               <img src={accountIcon} alt="" />
               <span>Tài khoản</span>
             </a>

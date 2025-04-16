@@ -6,7 +6,7 @@ a {
   .header-container {
     height: 8rem;
     // padding-bottom: 2.2rem;
-    padding-top: 2rem;
+    padding-top: 0.6rem;
 
     padding-left: 2rem;
     padding-right: 2rem;
@@ -114,11 +114,12 @@ a {
   }
   .sub-menu {
     // visibility: hidden;
+
     display: flex;
     position: absolute;
     background-color: #fff;
     height: 50%;
-    width: 100vw;
+    width: 100%;
     z-index: 10;
     top: 7rem;
     justify-content: center;

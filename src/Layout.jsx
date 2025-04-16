@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import WomenProduct from "./components/Women/WomenProduct";
 import GirlProduct from "./components/Girl/GirlProduct";
 import BoyProduct from "./components/Boy/BoyProduct";
+import AccountFunction from "./components/Acount/AccountFunction";
 const Layout = () => {
   return (
     <Routes>
@@ -14,9 +15,10 @@ const Layout = () => {
         <Route path="women" element={<WomenProduct />} />
         <Route path="boy" element={<BoyProduct />} />
         <Route path="girl" element={<GirlProduct />} />
+        <Route path="/account" element={<AccountFunction />}></Route>
       </Route>
       <Route path="/shop"></Route>
-      <Route path="/account"></Route>
+
       <Route path="/cart"></Route>
     </Routes>
   );
