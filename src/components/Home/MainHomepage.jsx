@@ -38,7 +38,7 @@ const MainHomepage = () => {
   const prevBtn = (event) => {
     setActive(active === 0 ? contentItem.length - 1 : active - 1);
   };
-  console.log(contentItem);
+
   return (
     <div className="main-homepage-container">
       <div className="main-content">
@@ -136,7 +136,6 @@ const MainHomepage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

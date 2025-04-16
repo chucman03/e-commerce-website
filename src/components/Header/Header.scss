@@ -4,7 +4,10 @@ a {
 }
 .header {
   .header-container {
+    height: 8rem;
+    // padding-bottom: 2.2rem;
     padding-top: 2rem;
+
     padding-left: 2rem;
     padding-right: 2rem;
     display: flex;
@@ -26,16 +29,28 @@ a {
     .header-menu {
       flex-grow: 1;
       margin-left: 3rem;
+      height: 100%;
+      align-items: center;
+      display: flex;
 
       ul {
         display: flex;
-        gap: 55px;
         align-items: center;
         list-style-type: none;
+        height: 100%;
+        width: 100%;
+        padding-right: 2rem;
         li {
           position: relative;
+          height: 100%;
+          width: 25%;
+
+          display: grid;
+          place-items: center;
           align-items: center;
           justify-content: center;
+          text-align: center;
+
           .nav-link.active::before {
             content: "";
             position: absolute;
@@ -43,8 +58,8 @@ a {
             width: 45px;
             height: 5px;
             border-radius: 5px;
-            top: 30px;
-            left: -6px;
+            top: 70px;
+            left: 27px;
           }
 
           span {
@@ -98,15 +113,18 @@ a {
     }
   }
   .sub-menu {
-    visibility: hidden;
+    // visibility: hidden;
     display: flex;
     position: absolute;
     background-color: #fff;
     height: 50%;
     width: 100vw;
     z-index: 10;
-    top: 6.75rem;
+    top: 7rem;
     justify-content: center;
     border-top: 1px solid #e6e7e8;
+    &.inactive {
+      visibility: hidden;
+    }
   }
 }

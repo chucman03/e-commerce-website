@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "./MultilevelMenu.scss";
 
 const MultilevelMenu = (props) => {
@@ -142,19 +143,21 @@ const MultilevelMenu = (props) => {
       link: "/scraft",
     },
   ];
+  const id = props.id;
 
   return (
     <div className="multimenu-container">
       <div className="left-multimenu">
         <div className="label">Danh mục sản phẩm</div>
         <div className="content">
-          {menuItemproduct[0].children.map((item, index) => {
-            return (
-              <div className="menu-item-content" key={index}>
-                <a href={item.link}>{item.title}</a>
-              </div>
-            );
-          })}
+          {menuItemproduct[id] &&
+            menuItemproduct[id].children.map((item, index) => {
+              return (
+                <div className="menu-item-content" key={index}>
+                  <a href={item.link}>{item.title}</a>
+                </div>
+              );
+            })}
         </div>
       </div>
       <div className="right-multimenu">

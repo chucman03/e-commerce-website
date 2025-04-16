@@ -6,7 +6,18 @@ import cartIcon from "../../assets/img/cart-icon.svg";
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
 import MultilevelMenu from "./MultilevelMenu";
+import { useState } from "react";
 const Header = () => {
+  const [activeSubmenu, setActiveSubmenu] = useState(false);
+  const [menuItemNav, setMenuItemNav] = useState(100);
+  const handleMouseEnter = (e) => {
+    const id = parseInt(e.currentTarget.dataset.id, 10);
+    setMenuItemNav(id);
+    setActiveSubmenu(true);
+  };
+  const handleMouseLeave = (e) => {
+    setActiveSubmenu(false);
+  };
   return (
     <div className="header">
       <div className="header-container">
@@ -17,22 +28,42 @@ const Header = () => {
         </div>
         <div className="header-menu">
           <ul>
-            <li>
+            <li
+              data-id={0}
+              className="nav-link-container"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <NavLink to="/women" className="nav-link">
                 <span>NỮ</span>
               </NavLink>
             </li>
-            <li>
+            <li
+              data-id={1}
+              className="nav-link-container"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <NavLink to="/man" className="nav-link">
                 <span>NAM</span>
               </NavLink>
             </li>
-            <li>
+            <li
+              data-id={2}
+              className="nav-link-container"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <NavLink to="/girl" className="nav-link">
                 <span>BÉ GÁI</span>
               </NavLink>
             </li>
-            <li>
+            <li
+              data-id={3}
+              className="nav-link-container"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <NavLink to="/boy" className="nav-link">
                 <span>BÉ TRAI</span>
               </NavLink>
@@ -68,8 +99,12 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="sub-menu">
-        <MultilevelMenu />
+      <div
+        className={activeSubmenu === true ? "sub-menu" : "sub-menu inactive"}
+        onMouseEnter={() => setActiveSubmenu(true)}
+        onMouseLeave={() => setActiveSubmenu(false)}
+      >
+        <MultilevelMenu id={menuItemNav} />
       </div>
     </div>
   );

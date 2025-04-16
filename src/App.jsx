@@ -16,6 +16,9 @@ function App() {
       <div className="app-content">
         <Outlet />
       </div>
+      <div className="app-footer">
+        <Footer />
+      </div>
     </div>
   );
 }
