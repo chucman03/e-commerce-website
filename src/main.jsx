@@ -5,11 +5,16 @@ import App from "./App.jsx";
 import "./Reset.scss";
 import Layout from "./Layout.jsx";
 import { BrowserRouter, Routes, Route } from "react-router";
+import { Provider } from "react-redux";
+import { store } from "./redux/store.jsx";
 
 createRoot(document.getElementById("root")).render(
-  // <StrictMode>
-  <BrowserRouter>
-    <Layout />
-  </BrowserRouter>
-  // </StrictMode>
+  <Provider store={store}>
+    {/* <StrictMode> */}
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+
+    {/* </StrictMode> */}
+  </Provider>
 );

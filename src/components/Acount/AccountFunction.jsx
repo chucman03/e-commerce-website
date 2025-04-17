@@ -1,6 +1,78 @@
 import "./AccountFunction.scss";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { postLogin } from "../../service/ApiService";
+import { postSignUp } from "../../service/ApiService";
 
 const AccountFunction = () => {
+  const [emailLogin, setEmailLogin] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
+  const [emailSignUp, setEmailSignUp] = useState("");
+  const [passwordSignUp, setPasswordSignUp] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const dispatch = useDispatch();
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const handleLogin = async () => {
+    const isValidEmail = validateEmail(emailLogin);
+    if (!isValidEmail) {
+      toast.error("invalid email");
+      return;
+    }
+    if (!passwordLogin) {
+      toast.error("invalid password");
+      return;
+    }
+    let data = await postLogin(emailLogin, passwordLogin);
+    if (data && data.EC === 0) {
+      dispatch(doLogin(data));
+      toast.success(data.EM);
+      setIsLoading(false);
+      navigate("/");
+    }
+    if (data && +data.EC !== 0) {
+      toast.error(data.EM);
+      setIsLoading(false);
+    }
+  };
+
+  const handleSignUp = async () => {
+    const isValidEmail = validateEmail(emailSignUp);
+    if (!isValidEmail) {
+      toast.error("invalid email");
+      return;
+    }
+    if (!passwordSignUp) {
+      toast.error("invalid password");
+      return;
+    }
+
+    let data = await postSignUp(
+      firstName,
+      lastName,
+      phoneNumber,
+      emailSignUp,
+      passwordSignUp
+    );
+    if (data && data.EC === 0) {
+      toast.success(data.EM);
+      navigate("/account");
+    }
+    if (data && +data.EC !== 0) {
+      toast.error(data.EM);
+    }
+  };
   return (
     <div className="account-function-container">
       <div className="account-login">
@@ -16,8 +88,8 @@ const AccountFunction = () => {
               <input
                 type={"email"}
                 className="form-control"
-                // value={email}
-                // onChange={(event) => setEmail(event.target.value)}
+                value={emailLogin}
+                onChange={(event) => setEmailLogin(event.target.value)}
               />
             </div>
             <div className="form-group">
@@ -26,8 +98,8 @@ const AccountFunction = () => {
               <input
                 type={"Password"}
                 className="form-control"
-                // value={password}
-                // onChange={(event) => setPassword(event.target.value)}
+                value={passwordLogin}
+                onChange={(event) => setPasswordLogin(event.target.value)}
                 // onKeyDown={(event) => handleKeyDown(event)}
               />
             </div>
@@ -37,10 +109,7 @@ const AccountFunction = () => {
           </div>
         </div>
         <div className="account-function-btn">
-          <button
-            className="btn-submit"
-            //   onClick={() => handleLogin()}
-          >
+          <button className="btn-submit" onClick={() => handleLogin()}>
             <span>ĐĂNG NHẬP</span>
           </button>
         </div>
@@ -58,8 +127,8 @@ const AccountFunction = () => {
               <input
                 type={"text"}
                 className="form-control"
-                // value={email}
-                // onChange={(event) => setEmail(event.target.value)}
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
               />
             </div>
             <div className="form-group">
@@ -67,8 +136,8 @@ const AccountFunction = () => {
               <input
                 type={"text"}
                 className="form-control"
-                // value={email}
-                // onChange={(event) => setEmail(event.target.value)}
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
               />
             </div>
             <div className="form-group">
@@ -76,8 +145,8 @@ const AccountFunction = () => {
               <input
                 type={"text"}
                 className="form-control"
-                // value={email}
-                // onChange={(event) => setEmail(event.target.value)}
+                value={phoneNumber}
+                onChange={(event) => setPhoneNumber(event.target.value)}
               />
             </div>
             <div className="form-group">
@@ -85,8 +154,8 @@ const AccountFunction = () => {
               <input
                 type={"email"}
                 className="form-control"
-                // value={email}
-                // onChange={(event) => setEmail(event.target.value)}
+                value={emailSignUp}
+                onChange={(event) => setEmailSignUp(event.target.value)}
               />
             </div>
             <div className="form-group">
@@ -95,18 +164,15 @@ const AccountFunction = () => {
               <input
                 type={"Password"}
                 className="form-control"
-                // value={password}
-                // onChange={(event) => setPassword(event.target.value)}
+                value={passwordSignUp}
+                onChange={(event) => setPasswordSignUp(event.target.value)}
                 // onKeyDown={(event) => handleKeyDown(event)}
               />
             </div>
           </div>
         </div>
         <div className="account-function-btn">
-          <button
-            className="btn-submit"
-            //   onClick={() => handleLogin()}
-          >
+          <button className="btn-submit" onClick={() => handleSignUp()}>
             <span>ĐĂNG KÝ</span>
           </button>
         </div>

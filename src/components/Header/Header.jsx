@@ -4,7 +4,7 @@ import shopIcon from "../../assets/img/shop-icon.svg";
 import accountIcon from "../../assets/img/account-icon.svg";
 import cartIcon from "../../assets/img/cart-icon.svg";
 import "./Header.scss";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import MultilevelMenu from "./MultilevelMenu";
 import { useState } from "react";
 const Header = () => {
@@ -80,22 +80,22 @@ const Header = () => {
         </div>
         <div className="header-group-icon">
           <div className="header-store">
-            <a href="" className="group-icon">
+            <Link to="/" className="group-icon">
               <img src={shopIcon} alt="" />
               <span>Cửa hàng</span>
-            </a>
+            </Link>
           </div>
           <div className="header-account">
-            <a href="/account" className="group-icon">
+            <Link to="/account" className="group-icon">
               <img src={accountIcon} alt="" />
               <span>Tài khoản</span>
-            </a>
+            </Link>
           </div>
           <div className="header-cart">
-            <a href="" className="group-icon">
+            <Link to="/" className="group-icon">
               <img src={cartIcon} alt="" />
               <span>Giỏ hàng</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
